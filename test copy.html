@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Carousel</title>
+  <style>
+    /* CSS 样式 */
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+    }
+    .video {
+      width: 100%;
+      height: auto;
+      display: none; /* 初始隐藏所有视频 */
+    }
+    .active {
+      display: block; /* 显示当前活动的视频 */
+    }
+    .controls {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+    }
+    .control-button {
+      cursor: pointer;
+      padding: 5px 10px;
+      margin: 0 5px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      font-size: 14px;
+    }
+    .nav-dots {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background-color: #333;
+      border-radius: 50%;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+    .active-dot {
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="video-container">
+    <!-- 第一个视频 -->
+    <video class="video active" autoplay controls muted loop playsinline>
+      <source src="./static/videos/reconstruction_results/0050.mp4" type="video/mp4">
+    </video>
+    <!-- 第二个视频 -->
+    <video class="video" autoplay controls muted loop playsinline>
+      <source src="./static/videos/reconstruction_results/0085.mp4" type="video/mp4">
+    </video>
+    <!-- 第三个视频 -->
+    <video class="video" autoplay controls muted loop playsinline>
+      <source src="./static/videos/reconstruction_results/0580.mp4" type="video/mp4">
+    </video>
+    <!-- 在此添加更多视频 -->
+  </div>
+
+  <!-- 控制按钮 -->
+  <div class="controls">
+    <button class="control-button" onclick="prevVideo()">上一个</button>
+    <button class="control-button" onclick="nextVideo()">下一个</button>
+  </div>
+
+  <!-- 导航点 -->
+  <div class="nav-dots">
+    <span class="dot" onclick="switchVideo(0)"></span>
+    <span class="dot" onclick="switchVideo(1)"></span>
+    <span class="dot" onclick="switchVideo(2)"></span>
+    <!-- 添加更多导航点 -->
+  </div>
+
+  <!-- JavaScript 代码 -->
+  <script>
+    // 获取所有视频元素
+    const videos = document.querySelectorAll(".video");
+    // 获取所有导航点元素
+    const dots = document.querySelectorAll(".dot");
+    // 当前活动视频的索引
+    let currentIndex = 0;
+
+    // 切换到指定索引视频的函数
+    function switchVideo(index) {
+      currentIndex = index;
+      // 隐藏所有视频
+      videos.forEach(video => video.classList.remove("active"));
+      // 显示指定索引的视频
+      videos[index].classList.add("active");
+      // 更新导航点状态
+      updateDots();
+    }
+
+    // 切换到上一个视频的函数
+    function prevVideo() {
+      currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+      switchVideo(currentIndex);
+    }
+
+    // 切换到下一个视频的函数
+    function nextVideo() {
+      currentIndex = (currentIndex + 1) % videos.length;
+      switchVideo(currentIndex);
+    }
+
+    // 更新导航点状态的函数
+    function updateDots() {
+      dots.forEach(dot => dot.classList.remove("active-dot"));
+      dots[currentIndex].classList.add("active-dot");
+    }
+  </script>
+</body>
+</html>
+
+

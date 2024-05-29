@@ -41,30 +41,67 @@
   <script src="./static/js/index.js"></script>
 
 <!-- appendix -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Carousel</title>
 <style>
-  .video-container1 {
+  /* CSS 样式 */
+  .video-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 让视频容器铺满整个视口高度 */
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    max-width: 1080px; /* 设置最大宽度，防止视频过大超出屏幕 */
+  }
+  .video {
+    width: 100%;
+    height: auto;
+    display: none; /* 初始隐藏所有视频 */
+    max-width: auto; /* 视频最大宽度为网页宽度 */
+  }
+  .active {
+    display: block; /* 显示当前活动的视频 */
+  }
+  .controls {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+  }
+  .control-button {
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+  }
+  .nav-dots {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #333;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  .active-dot {
+    background-color: #fff;
   }
 
-  .video1 {
-    flex: 1 0 22%;
-    margin: 8px;
-  }
-  .divider {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background-color: rgb(195, 192, 192);
-}
-.indented {
-margin-top: 2em;
-}
 </style>
-
 
 </head>
 <body>
@@ -119,25 +156,31 @@ margin-top: 2em;
           <h1 class="title is-1 publication-title">GaussianRoom: Improving 3D Gaussian Splatting with SDF Guidance and Monocular Cues for Indoor Scene Reconstruction</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="xxx.com">Haodong Xiang*</a><sup>1</sup>,</span>
+              <!-- <a href="xxx.com">Haodong Xiang*</a><sup>1</sup>,</span> -->
+              Haodong Xiang*<sup>1</sup>,</span>
             <span class="author-block">
-              <a href="xxx.com">Xinghui Li*</a><sup>1</sup>,</span>
+              <!-- <a href="xxx.com">Xinghui Li*</a><sup>1</sup>,</span> -->
+              Xinghui Li*<sup>1</sup>,</span>
             <span class="author-block">
-              <a href="xxx.com">Xiansong Lai</a><sup>1</sup>,
+              <!-- <a href="xxx.com">Xiansong Lai</a><sup>1</sup>, -->
+              Xiansong Lai<sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="xxx.com">Wanting Zhang</a><sup>1</sup>,
+              <!-- <a href="xxx.com">Wanting Zhang</a><sup>1</sup>, -->
+              Wanting Zhang<sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="xxx.com">Zhichao Liao</a><sup>1</sup>,
+              <!-- <a href="xxx.com">Zhichao Liao</a><sup>1</sup>, -->
+              Zhichao Liao<sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="https://cklibra.github.io/">Kai Cheng**</a><sup>2</sup>,
+              <a href="https://cklibra.github.io/">Kai Cheng</a><sup>2✉</sup>,
             </span>
             <span class="author-block">
-              <a href="xxx.com">Xueping Liu**</a><sup>1</sup>
+              <a href="https://www.sigs.tsinghua.edu.cn/lxp/main.htm">Xueping Liu</a><sup>1✉</sup> 
+              <!-- Xueping Liu<sup>1✉</sup>  -->
             </span>
-            <p>(* Equal Contribution, ** Corresponding Author)</p>
+            <p>(* Equal Contribution)</p>
           </div>
 
           <div class="is-size-5 publication-authors">
@@ -206,7 +249,7 @@ margin-top: 2em;
 
 <!-- reconstruction_results -->
 
-<section class="hero teaser">
+<!-- <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
       <video id="teaser" autoplay muted loop playsinline height="100%">
@@ -220,30 +263,95 @@ margin-top: 2em;
 
     </div>
   </div>
-</section>
+</section> -->
 
-<div class="carousel-container is-max-desktop">
-  <div class="carousel">
-    <video class="carousel-item" autoplay controls muted loop playsinline>
+<div class="columns is-centered has-text-centered">
+  <div class="video-container">
+    <!-- 第一个视频 -->
+    <video class="video active" autoplay controls muted loop playsinline height="100%">
       <source src="./static/videos/reconstruction_results/0050.mp4" type="video/mp4">
     </video>
-    <video class="carousel-item" autoplay controls muted loop playsinline>
+    <!-- 第二个视频 -->
+    <video class="video" autoplay controls muted loop playsinline height="100%">
       <source src="./static/videos/reconstruction_results/0085.mp4" type="video/mp4">
     </video>
-    <video class="carousel-item" autoplay controls muted loop playsinline>
+    <!-- 第三个视频 -->
+    <video class="video" autoplay controls muted loop playsinline height="100%">
       <source src="./static/videos/reconstruction_results/0580.mp4" type="video/mp4">
     </video>
-    <video class="carousel-item" autoplay controls muted loop playsinline>
+    <video class="video" autoplay controls muted loop playsinline height="100%">
       <source src="./static/videos/reconstruction_results/0616.mp4" type="video/mp4">
     </video>
-  </div>
-  <div class="carousel-nav">
-    <span class="carousel-dot" data-index="0"></span>
-    <span class="carousel-dot" data-index="1"></span>
-    <span class="carousel-dot" data-index="2"></span>
-    <span class="carousel-dot" data-index="3"></span>
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/0721.mp4" type="video/mp4">
+    </video>
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/8b5caf3398.mp4" type="video/mp4">
+    </video>
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/8d563fc2cc.mp4" type="video/mp4">
+    </video>
+    <!-- 在此添加更多视频 -->
   </div>
 </div>
+
+
+<!-- 控制按钮 -->
+<!-- <div class="controls">
+  <button class="control-button" onclick="prevVideo()">last</button>
+  <button class="control-button" onclick="nextVideo()">next</button>
+</div> -->
+
+<!-- 导航点 -->
+<div class="nav-dots">
+  <span class="dot" onclick="switchVideo(0)"></span>
+  <span class="dot" onclick="switchVideo(1)"></span>
+  <span class="dot" onclick="switchVideo(2)"></span>
+  <span class="dot" onclick="switchVideo(3)"></span>
+  <span class="dot" onclick="switchVideo(4)"></span>
+  <span class="dot" onclick="switchVideo(5)"></span>
+  <span class="dot" onclick="switchVideo(6)"></span>
+  <!-- 添加更多导航点 -->
+</div>
+
+<!-- JavaScript 代码 -->
+<script>
+  // 获取所有视频元素
+  const videos = document.querySelectorAll(".video");
+  // 获取所有导航点元素
+  const dots = document.querySelectorAll(".dot");
+  // 当前活动视频的索引
+  let currentIndex = 0;
+
+  // 切换到指定索引视频的函数
+  function switchVideo(index) {
+    currentIndex = index;
+    // 隐藏所有视频
+    videos.forEach(video => video.classList.remove("active"));
+    // 显示指定索引的视频
+    videos[index].classList.add("active");
+    // 更新导航点状态
+    updateDots();
+  }
+
+  // 切换到上一个视频的函数
+  function prevVideo() {
+    currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+    switchVideo(currentIndex);
+  }
+
+  // 切换到下一个视频的函数
+  function nextVideo() {
+    currentIndex = (currentIndex + 1) % videos.length;
+    switchVideo(currentIndex);
+  }
+
+  // 更新导航点状态的函数
+  function updateDots() {
+    dots.forEach(dot => dot.classList.remove("active-dot"));
+    dots[currentIndex].classList.add("active-dot");
+  }
+</script>
 
 <!-- <section class="hero is-light is-small">
   <div class="hero-body">
@@ -369,31 +477,32 @@ margin-top: 2em;
 </section>
 
 
+
+
+
+
 <section class="section">
   <div class="container is-max-desktop">
 
     <!-- Animation. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Compare</h2>
+        <!-- <h2 class="title is-3">Comparison</h2> -->
 
     <!-- ReconstructionComparison video. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Reconstruction Comparisons</h2>
         <div class="publication-video">
-          <!-- <iframe src="https://www.bilibili.com/bangumi/play/ep199612/?share_source=copy_web"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
-          <!-- <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
           <video id="teaser" autoplay muted loop playsinline height="100%">
-            <source src="./static/videos/ReconstructionComparisons_720p.mp4"
-                    type="video/mp4">
+            <!-- <source src="./static/videos/ReconstructionComparisons_720p.mp4" type="video/mp4"> -->
+            <source src="./static/videos/reconstruction_comparisons/0085.mp4" type="video/mp4">
           </video>
         </div>
       </div>
     </div>
     <!--/ ReconstructionComparison video. -->
+
   
     <!-- RenderingComparison video. -->
     <div class="columns is-centered has-text-centered">
@@ -405,8 +514,8 @@ margin-top: 2em;
           <!-- <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
           <video id="teaser" autoplay muted loop playsinline height="100%">
-            <source src="./static/videos/RenderingComparisons_720p.mp4"
-                    type="video/mp4">
+            <!-- <source src="./static/videos/RenderingComparisons_720p.mp4"type="video/mp4"> -->
+            <source src="./static/videos/rendering_comparisons/0085.mp4"type="video/mp4">
           </video>
         </div>
       </div>
@@ -473,40 +582,177 @@ margin-top: 2em;
     <!--/ Animation. -->
 
 
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
 
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2403.16964">GSDF</a> also jointly optimizes Neural SDF and 3DGS.
-          </p>
-
-          <!-- <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p> -->
-        </div>
-      </div>
-    </div>
-    <!--/ Concurrent Work. -->
 
   </div>
 </section>
 
+
+<section class="hero is-light is-small is-centered has-text-centered">
+  <h2 class="title is-3">More Reconstruction Comparisons</h2>
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/0050.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/0085.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/0580.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/0616.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/0721.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/8b5caf3398.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/8d563fc2cc.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!-- <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <h2 class="title is-3">More Rendering Comparisons</h2>
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/rendering_comparisons/0050.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/rendering_comparisons/0085.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/rendering_comparisons/0580.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/rendering_comparisons/0616.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/rendering_comparisons/0721.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/rendering_comparisons/8b5caf3398.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/rendering_comparisons/8d563fc2cc.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!-- <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <!-- Concurrent Work. -->
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <h2 class="title is-3">Related Links</h2>
+
+            <div class="content has-text-justified">
+              <!-- <p>
+                There's a lot of excellent work that was introduced around the same time as ours.
+              </p>
+              <p>
+                <a href="https://arxiv.org/abs/2403.16964">GSDF</a> also jointly optimizes Neural SDF and 3DGS.
+              </p> -->
+
+              <p>
+                We thank <a href="https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/">3DGS</a>, 
+                <a href="https://kcheng1021.github.io/gaussianpro.github.io/">GaussianPro</a>, 
+                <!-- and <a href="https://jiepengwang.github.io/NeuRIS/">NeuRIS</a> -->
+                and <a href="https://lingjie0206.github.io/papers/NeuS/">NeuS</a>
+                
+                for our code references.
+
+
+              </p>
+
+              <!-- <p>
+                <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
+              </p>
+              <p>
+                <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
+                both use deformation fields to model non-rigid scenes.
+              </p>
+              <p>
+                Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
+              </p>
+              <p>
+                There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+              </p> -->
+            </div>
+          </div>
+        </div>
+        <!--/ Concurrent Work. -->
+    </div>
+  </div>
+</div>
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
@@ -521,6 +767,7 @@ margin-top: 2em;
 </section>
 
 
+
 <!-- <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
@@ -532,6 +779,7 @@ margin-top: 2em;
         <i class="fab fa-github"></i>
       </a>
     </div>
+
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
@@ -552,6 +800,20 @@ margin-top: 2em;
     </div>
   </div>
 </footer> -->
+
+<footer class="footer">
+
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p style="font-size:18px">
+            We are very grateful to the authors of <a href="https://nerfies.github.io/">Nerfies</a> for open-sourcing the template for this website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
