@@ -4,7 +4,7 @@ This is the repository that contains source code for the [GaussianRoom website](
 
 If you find GaussianRoom useful for your work please cite:
 ```
-@article{park2021nerfies
+@article{GaussianRoom
   author    = {GaussianRoom},
   title     = {GaussianRoom},
   journal   = {NeurIPS},
