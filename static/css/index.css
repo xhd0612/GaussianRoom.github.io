@@ -207,3 +207,77 @@ body {
 .carousel-dot.active {
   background-color: #333;
 }
+
+/* 样式调整 */
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+}
+
+.video {
+  display: none;
+}
+
+.video.active {
+  display: block;
+}
+
+.controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none; /* 防止点击阻塞视频控件 */
+}
+
+.control-button {
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 5px;
+  pointer-events: all; /* 允许按钮点击 */
+}
+
+.control-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.control-button.prev {
+  position: absolute;
+  left: 10px;
+}
+
+.control-button.next {
+  position: absolute;
+  right: 10px;
+}
+
+.nav-dots {
+  text-align: center;
+  padding: 20px;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+  cursor: pointer;
+}
+
+.active-dot {
+  background-color: #717171;
+}

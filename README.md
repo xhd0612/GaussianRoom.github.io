@@ -7,7 +7,7 @@ If you find GaussianRoom useful for your work please cite:
 @article{GaussianRoom
   author    = {GaussianRoom},
   title     = {GaussianRoom},
-  journal   = {NeurIPS},
+  journal   = {arXiv},
   year      = {2024},
 }
 ```

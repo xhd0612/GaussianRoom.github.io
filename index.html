@@ -292,15 +292,14 @@
       <source src="./static/videos/reconstruction_results/8d563fc2cc.mp4" type="video/mp4">
     </video>
     <!-- 在此添加更多视频 -->
+
+    <!-- 控制按钮 -->
+    <div class="controls">
+      <button class="control-button prev" onclick="prevVideo()">❮</button>
+      <button class="control-button next" onclick="nextVideo()">❯</button>
+    </div>
   </div>
 </div>
-
-
-<!-- 控制按钮 -->
-<!-- <div class="controls">
-  <button class="control-button" onclick="prevVideo()">last</button>
-  <button class="control-button" onclick="nextVideo()">next</button>
-</div> -->
 
 <!-- 导航点 -->
 <div class="nav-dots">
@@ -351,6 +350,9 @@
     dots.forEach(dot => dot.classList.remove("active-dot"));
     dots[currentIndex].classList.add("active-dot");
   }
+
+  // 初始化时更新导航点状态
+  updateDots();
 </script>
 
 <!-- <section class="hero is-light is-small">
@@ -515,7 +517,7 @@
                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
           <video id="teaser" autoplay muted loop playsinline height="100%">
             <!-- <source src="./static/videos/RenderingComparisons_720p.mp4"type="video/mp4"> -->
-            <source src="./static/videos/rendering_comparisons/0085.mp4"type="video/mp4">
+            <source src="./static/videos/RenderinigComparison_slow/0721_new.mp4"type="video/mp4">
           </video>
         </div>
       </div>
@@ -651,43 +653,37 @@
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-steve">
           <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/rendering_comparisons/0050.mp4"
+            <source src="./static/videos/RenderinigComparison_slow/0050_slow.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-chair-tp">
           <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/rendering_comparisons/0085.mp4"
+            <source src="./static/videos/RenderinigComparison_slow/0085_slow.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-shiba">
           <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/rendering_comparisons/0580.mp4"
+            <source src="./static/videos/RenderinigComparison_slow/0580_slow.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-fullbody">
           <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/rendering_comparisons/0616.mp4"
+            <source src="./static/videos/RenderinigComparison_slow/0616_slow.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/RenderinigComparison_slow/0603_slow.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-blueshirt">
           <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/rendering_comparisons/0721.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/rendering_comparisons/8b5caf3398.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/rendering_comparisons/8d563fc2cc.mp4"
+            <source src="./static/videos/RenderinigComparison_slow/0721_slow.mp4"
                     type="video/mp4">
           </video>
         </div>
