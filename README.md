@@ -5,10 +5,10 @@ This is the repository that contains source code for the [GaussianRoom website](
 If you find GaussianRoom useful for your work please cite:
 ```
 @article{xiang2024gaussianroom,
-      title={GaussianRoom: Improving 3D Gaussian Splatting with SDF Guidance and Monocular Cues for Indoor Scene Reconstruction}, 
-      author={Haodong Xiang and Xinghui Li and Xiansong Lai and Wanting Zhang and Zhichao Liao and Kai Cheng and Xueping Liu},
-      year={2024},
-      journal={arXiv preprint arXiv:2405.19671},
+  title={GaussianRoom: Improving 3D Gaussian Splatting with SDF Guidance and Monocular Cues for Indoor Scene Reconstruction},
+  author={Xiang, Haodong and Li, Xinghui and Lai, Xiansong and Zhang, Wanting and Liao, Zhichao and Cheng, Kai and Liu, Xueping},
+  journal={arXiv preprint arXiv:2405.19671},
+  year={2024}
 }
 ```
 
